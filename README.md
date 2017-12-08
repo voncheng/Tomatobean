@@ -10,7 +10,7 @@ Tomatobean是一个react + redux + react-routed的集成框架。它简化了�
 npm install tomatobean
 ```
 
-## 一.快速开始
+## 一.快速开始
 
 >加载配置文件生成App，就像这样
 
