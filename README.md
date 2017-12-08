@@ -81,7 +81,7 @@ export const routerConfig = {
 * state: {} 浏览器Location的状态，可以在页面跳转的时候最为传值对象   注: 按需要内部可以添加任意多个值，在这里配置作为初始值使用
 * mark: sting 是否作为Tabbar的展示项，如果有内容则值作为Tabbar的展示内容（可选）
 * childRoutes: {} 子路由
-* checkAuthority: 需不需要做用户登录认证，默认true。也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#jump)
+* checkAuthority: 需不需要做用户登录认证，默认true。也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#jump)
 
 > ## models
 models作为工程业务的主体部分，也是重点说明的部分。首先还是看一下代码部分。
