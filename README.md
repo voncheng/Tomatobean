@@ -73,7 +73,7 @@ export const routerConfig = {
 ```
 #### 配置规则
 * routes: [Object]  路由主体
-* initializationTabs: [Object] 初始状态下Tabbar的展示项（可选）
+* initializationTabs: [Object] 初始状态下Tabbar的展示项（可选）
 * path: string 匹配路径
 * component: string React页面的放置路径
 * indexRoute: {} 需要做重定向的操作对象
