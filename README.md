@@ -83,7 +83,7 @@ export const routerConfig = {
 * childRoutes: {} 子路由
 * checkAuthority: 需不需要做用户登录认证，默认true。也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#jump)
 
-> ## models
+> ## 2. models
 models作为工程业务的主体部分，也是重点说明的部分。首先还是看一下代码部分。
 
 ```javascript
