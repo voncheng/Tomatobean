@@ -6,7 +6,9 @@ Tomatobean是一个react + redux + react-router的集成框架。它简化了三
 
 [TOC]
 
-版本更新历史v0.9.0
+版本更新历史：
+
+[V0.9.0跟新文档](https://github.com/VonCheng/Tomatobean/blob/master/src0.9.0/update-doc.md)
 
 ## 安装
 
