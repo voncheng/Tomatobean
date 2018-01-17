@@ -1,3 +1,4 @@
+
 /**
  * File: /Users/fengchengpu/Project/moon/src/tomatobean/paramsStore/confClassStore.js
  * Project: /Users/fengchengpu/Project/moon
@@ -10,7 +11,15 @@
  * Copyright (c) 2017 MagCloud
  */
 function confClassStoreCreate() {
-  const config = {};
+  const context = require.context('../configuration', true, /\.js$/);
+  function requireAll(requireContext) {
+    return requireContext.keys().map(requireContext);
+  }
+  const cCs = requireAll(context);
+  let config = {};
+  cCs.forEach((conf) => {
+    config = { ...config, ...conf };
+  });
   return (className, conf) => {
     if (!className) return config;
     if (!conf) return config[className];

@@ -16,7 +16,7 @@ export function setAuthority(state) {
  * @param {*} statue 是否可以进入程序
  * @param {*} updateStatus
  */
-function authorityDispatch(dispatch, statue, updateStatus) {
+export function authorityDispatch(dispatch, statue, updateStatus) {
   if (statue) {
     if (updateStatus) {
       updateStatus(false);
@@ -24,24 +24,28 @@ function authorityDispatch(dispatch, statue, updateStatus) {
     dispatch(setAuthority(true));
   } else {
     dispatch(setAuthority(statue));
-    dispatch(replace({ pathname: '/login' }));
   }
 }
 /**
  * 校验身份是否可以访问页面
  * @param {*是否可以访问} status
  */
-export function checkAuthority(updateStatus) {
+export function checkAuthority(updateStatus, fulfilled) {
   return (dispatch) => {
     // 获取配置类
-    const Authority = confClassStore('Authority');
+    const AuthorityInterceptor = confClassStore('AuthorityInterceptor');
     // 设置进入系统权限 blean
-    const authority = (statue) => { authorityDispatch(dispatch, statue, updateStatus); };
+    const authority = (statue, resolve) => {
+      authorityDispatch(dispatch, statue, updateStatus);
+      resolve(statue);
+    };
     // 重定向方法
     const redirect = (loaction) => {
       dispatch(replace(loaction));
-      // 注入authority和redirect 方法
     };
-    Authority.checkAuthority(authority, redirect);
+    // 注入authority和redirect 方法
+    new Promise((resolve) => {
+      AuthorityInterceptor.checkAuthority(statue => authority(statue, resolve), redirect);
+    }).then(fulfilled);
   };
 }

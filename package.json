@@ -5,10 +5,18 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "babel -d publish/ src0.8.1/ --no-comments && lessc src0.8.1/components/tabbar/tabbar.less publish/components/tabbar/tabbar.css"
+    "publish": "babel -d publish/ src0.9.0/ --no-comments && lessc src0.9.0/components/tabbar/tabbar.less publish/components/tabbar/tabbar.css"
   },
   "author": "chengpu",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VonCheng/Tomatobean.git"
+  },
+  "bugs": {
+    "url": "https://github.com/VonCheng/Tomatobean/issues"
+  },
+  "homepage": "https://github.com/VonCheng/Tomatobean#readme",
   "dependencies": {
     "notificationcenter": "^1.1.0",
     "react": "^16.1.0",

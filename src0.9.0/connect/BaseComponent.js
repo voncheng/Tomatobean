@@ -4,14 +4,6 @@ import { bindActionCreators } from 'redux';
 import { checkAuthority } from '../actions/bizAction';
 import { getDisplayName } from '../util/tools';
 /**
- * 获取函数字面量
- */
-Function.prototype.getName = () => {
-  return this.name || this
-    .toString()
-    .match(/function\s*([^(]*)\(/)[1];
-};
-/**
  *
  * @param {*目标组件} Comp
  * @param {*回调函数} callBack
@@ -19,7 +11,7 @@ Function.prototype.getName = () => {
 export const BaseComponent = (Comp, callBack) => {
   class WithSubscription extends Component {
     componentDidMount() {
-      callBack();
+      callBack(this.props.location);
     }
     render() {
       const {
@@ -52,6 +44,7 @@ export const RootRoute = (Target) => {
       ...others
     } = props;
     const actions = bindActionCreators({ checkAuthority }, dispatch);
+
     return (
       <div>
         {authorityStatus ?

@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Router } from 'react-router';
 import { connect } from 'react-redux';
 import { BaseComponentConnect, BaseParentRouteConnect } from '../connect';
-import { tabBarIncrement, parentRouteCompVisible } from '../actions/kitAction';
+import { tabBarIncrement, parentRouteCompVisible, redirect } from '../actions/kitAction';
 import { checkAuthority, setAuthority } from '../actions/bizAction';
 import routerConfig, { modules } from './modules';
 import { getDisplayName } from '../util/tools';
+import confClassStore from '../paramsStore/confClassStore';
 // 是否需要认证后才可进入 如果为true  则第一次进入时认证，如果认证成功则后面的所有跳转不再认证
 let isFsChk = true;
+const AuthorityInterceptor = confClassStore('AuthorityInterceptor');
 // console.log(isfschk);
 
 // import {FadingRoute} from './FadingRoute';   vonvenient inline rendering
@@ -36,16 +38,25 @@ let isFsChk = true;
  * @param {any} route
  * @param {any} dispatch
  */
-function checkAuthorityBean(route, dispatch) {
-  if (route.state && route.state.checkAuthority === false) { // 是否需要校验身份
-    dispatch(setAuthority(true));
-  } else if (localStorage.fromLogin === 'true') { // 判断是不是从登陆页面直接登录
-    localStorage.fromLogin = false;
+function checkAuthorityBean(currentLocation, route, dispatch) {
+  if (localStorage.fromLogin === 'true') { // 判断是不是从登陆页面直接登录
     dispatch(setAuthority(true));
   } else if (isFsChk) {
-    dispatch(checkAuthority((updateStatus) => {
-      isFsChk = updateStatus;
-    }));
+    if (route.state && route.state.checkAuthority === false) { // 是否需要校验身份
+      AuthorityInterceptor.preHandle(currentLocation,
+        location => dispatch(redirect(location)),
+        statue => dispatch(setAuthority(statue)),
+        true);
+    } else {
+      dispatch(checkAuthority((updateStatus) => {
+        isFsChk = updateStatus;
+      }, () => {
+        AuthorityInterceptor.preHandle(currentLocation,
+          location => dispatch(redirect(location)),
+          statue => dispatch(setAuthority(statue)),
+          true);
+      }));
+    }
   } else {
     dispatch(setAuthority(true));
   }
@@ -74,8 +85,14 @@ const transformConfig = (routes, dispatch) => {
     rts.forEach((route) => {
       if (route.component) {
         let Comp = modules[route.compMatch];
+        if (process.env.NODE_ENV !== 'production' && !Comp) {
+          throw new Error(`未扫描到'${route.compMatch}'路径下的的组件. 请检查路由配置文件是否配置正确`);
+        }
         // HOC继承Base组件
-        Comp = BaseComponentConnect(Comp, () => checkAuthorityBean(route, dispatch));
+        Comp = BaseComponentConnect(
+          Comp,
+          location => checkAuthorityBean(location, route, dispatch)
+        );
         // 自动配置BaseParentRoute
         Comp = autowiredParentRoute(Comp, route);
         // 渲染Comp
@@ -87,6 +104,12 @@ const transformConfig = (routes, dispatch) => {
             replace({ pathname: route.indexRoute.redirect, state: route.indexRoute.state });
         } else {
           route.onEnter = (nextState) => {
+            // 校验访问权限
+            if (!isFsChk) {
+              AuthorityInterceptor.preHandle(nextState.location,
+                location => dispatch(redirect(location)),
+                statue => dispatch(setAuthority(statue)), false);
+            }
             if (route.childRoutes) {
               if (route.path === nextState.location.pathname) {
                 dispatch(parentRouteCompVisible(false));
@@ -105,7 +128,7 @@ const transformConfig = (routes, dispatch) => {
                 dispatch(tabBarIncrement({ pathname: route.path, state: route.state }));
               }
             } else if (route.state) {
-              // console.log(nextState.location, route)
+              // console.log(nextState.location, route);
               if (nextState.location.pathname === route.path) {
                 if (nextState.location.state) {
                   if (route.state) {

@@ -13,9 +13,16 @@ import confStore from './paramsStore/confStore';
 import modelStore from './paramsStore/modelStore';
 import setHost from './hostSetting';
 import renderApp from './renderApp';
+import BaseActions from './enhance';
+import tomatoScan from './context';
+import publicStore from './paramsStore/publicStore';
+
 import { ModalSelecterConnect } from './connect';
 
-export default function createApp() {
+// 扫描工程目录提取配置类及model
+tomatoScan();
+
+function createApp() {
   return {
     config() {
     },
@@ -33,8 +40,26 @@ export default function createApp() {
     },
   };
 }
+/**
+ * 构建相关
+ */
+export default createApp;
 export { ModalSelecterConnect as Selecter };
 export { combinArray as combinModals } from './util/tools.js';
-export { Authority } from './configuration/Authority';
+/**
+ * 配置相关
+ */
+export { AuthorityInterceptor } from './configuration/AuthorityInterceptor';
 export { Configuration } from './annotation/Configuration';
+
+/**
+ * 增强器
+ */
+export { BaseActions };
+export { Tabbar, Notification } from './enhance';
+
+/**
+ *工具方法
+ */
+export { publicStore };
 
