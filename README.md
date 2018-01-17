@@ -8,7 +8,7 @@ Tomatobean是一个react + redux + react-router的集成框架。它简化了三
 
 版本更新历史：
 
-[V0.9.0跟新文档](https://github.com/VonCheng/Tomatobean/blob/master/src0.9.0/update-doc.md)
+[V0.9.0更新文档](https://github.com/VonCheng/Tomatobean/blob/master/src0.9.0/update-doc.md)
 
 ## 安装
 
@@ -146,10 +146,6 @@ export async function getOpportunityList(params, put) {
 ```
 
 下面要说的就是Tomato提供的一些具体的方法、装饰器、配置类的使用说明。
-
-
-
-
 
 
 
