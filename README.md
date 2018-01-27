@@ -80,7 +80,7 @@ export const routerConfig = {
 ```
 *配置规则*
 
-&#8195;&#8195;属性名称&#8195;| &#8195;类型 | 默认值| 描述
+&#8195;&#8195;属性名称&#8195;| 类型 | 默认值| 描述
 --- | --- | -- |---
 routes | Object | &#8195;&#8195;&#8195;| 路由主体
 initializationTabs| Object || 初始状态下Tabbar的展示项（可选）
@@ -126,6 +126,7 @@ namespace |string |&#8195;无&#8195;&#8195; | 命名空间这里也用做model�
  cache | boolean | false | 缓存类型（与`autowrite`属性关联）
  autowrite | object |null | 设置需要懒加载的`state`（与`cache`属性关联）
 reducers | object |{}| 存放响应器[reducer](#reducer)。响应器是一个用于响应一个action事件，并更新states值的函数。
+
  注：
  > 1. 当cache: true ，在整个工程范围内，已设置的懒加载state，每条数据只会加载一次，（如果一次没有装载成功，那么接下来的取值还会继续装载，直到装载成功）
  > 当cache: false，但autowrite有值，那么装载机制的作用范围，就是以绑定模型的组件，而不是整个工程。
