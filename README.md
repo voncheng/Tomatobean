@@ -80,17 +80,17 @@ export const routerConfig = {
 ```
 *配置规则*
 
-&#8195;&#8195;属性名称&#8195;&#8195;| &#8195;类型&#8195; | 默认值 | 描述
---- | --- |---|---
-routes | Object |-- | 路由主体
-initializationTabs| Object |-- | 初始状态下Tabbar的展示项（可选）
-path| string|-- | 匹配路径
-component| string |-- | React页面的放置路径
-indexRoute| Object |-- |需要做重定向的操作对象
-redirect| string | -- |重定向匹配路径
-state| object |-- | 浏览器Location的状态，可以在页面跳转的时候最为传值对象。`注:` 按需要内部可以添加任意多个值，在这里配置作为初始值使用
-mark| sting |-- |是否作为Tabbar的展示项，如果有内容则值作为Tabbar的展示内容（可选）
-childRoutes| Object |-- | 子路由
+&#8195;&#8195;属性名称&#8195;| &#8195;类型 | 默认值| 描述
+--- | --- | -- |---
+routes | Object | &#8195;&#8195;&#8195;| 路由主体
+initializationTabs| Object || 初始状态下Tabbar的展示项（可选）
+path| string|| 匹配路径
+component| string || React页面的放置路径
+indexRoute| Object ||需要做重定向的操作对象
+redirect| string | |重定向匹配路径
+state| object || 浏览器Location的状态，可以在页面跳转的时候最为传值对象。`注:` 按需要内部可以添加任意多个值，在这里配置作为初始值使用
+mark| sting ||是否作为Tabbar的展示项，如果有内容则值作为Tabbar的展示内容（可选）
+childRoutes| Object || 子路由
 checkAuthority| boolean|true| 需不需要做用户登录认证，也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#jump)
 
 ### 2. models
@@ -119,14 +119,13 @@ export default {
 
 *属性说明*
 
-&#8195;属性名称&#8195; | &#8195;类型&#8195; | 默认值 | 描述
+属性名称&#8195; | 类型 | 默认值 | 描述
 --- | --- |---|---
-namespace | string | 无 | 命名空间这里也用做model的名称，需要保证唯一性
+namespace |string |&#8195;无&#8195;&#8195; | 命名空间这里也用做model的名称，需要保证唯一性
  state | object |{}| 数据模型，可以理解为需要托管的状态
  cache | boolean | false | 缓存类型（与`autowrite`属性关联）
  autowrite | object |null | 设置需要懒加载的`state`（与`cache`属性关联）
 reducers | object |{}| 存放响应器[reducer](#reducer)。响应器是一个用于响应一个action事件，并更新states值的函数。
-
  注：
  > 1. 当cache: true ，在整个工程范围内，已设置的懒加载state，每条数据只会加载一次，（如果一次没有装载成功，那么接下来的取值还会继续装载，直到装载成功）
  > 当cache: false，但autowrite有值，那么装载机制的作用范围，就是以绑定模型的组件，而不是整个工程。
@@ -162,6 +161,10 @@ export async function getOpportunityList(params, update) {
 
 
 下面要说的就是Tomato提供的一些具体的方法、装饰器、配置类的使用说明。
+
+
+
+
 
 
 
