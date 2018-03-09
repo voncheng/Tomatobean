@@ -7,14 +7,37 @@ Tomatobean是一个react + redux + react-router的集成框架。它简化了三
 版本更新历史：
 
 [V0.9.0更新文档](https://github.com/VonCheng/Tomatobean/blob/master/src0.9.0/update-doc.md)
-## 安装
+
+**主要目录如下：**
+
+* [安装](#install)
+* [快速开始](#start)
+* [进阶](#advance)
+  - [routerConfig](#routerconfig)
+  - [models](#models)
+  - [action](#action)
+  - [api](#api)
+* [装饰器](#decorate)
+  - [BaseAction](#baseaction)
+  - [Selecter](#selecter)
+  - [RootRouteConnect](#rootrouteconnect)
+  - [Configuration](#configuration)
+  - [Tabbar](#tabbar)
+  - [Notification](#notification)
+  
+* [配置类](#configure)
+  - [AuthorityInterceptor](#authorityinterceptor)
+* [工具方法](#tools)
+  - [combinModals](#combinmodals)
+
+## <span id="install">安装</span>
 
 安装命令: 
 ```
 npm install tomatobean
 ```
 
-## 一.快速开始
+## <span id="start">快速开始</span>
 
 >加载配置文件生成App，就像这样
 
@@ -36,9 +59,10 @@ app.run();
 ```
 app的运行依赖于这三个文件。其中model配置文件涉及到开发者具体项目的业务部分，也是开发者最关系的事情，接下来我会逐一解释这三个文件的用法和作用。
 
-## 二.进阶
+## <span id="advance">进阶</span>
 
-### 1. routerConfig
+### <span id="routerconfig">routerConfig</span>
+
 routerConfig 这个文件主要是配置工程的路由部分。由于tomato框架集成的是react-router组件，所以在配置上跟react-router有一些相似之处。只不过为了一些特殊的功能的实现，再其基础上进行了包装。整个配置文件看起来会是这样。
 
 ```javascript
@@ -91,7 +115,7 @@ mark| sting ||是否作为Tabbar的展示项，如果有内容则值作为Tabbar
 childRoutes| Object || 子路由
 checkAuthority| boolean|true| 需不需要做用户登录认证，也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#jump)
 
-### 2. models
+### <span id="models">models</span>
 models作为工程业务的主体部分，也是重点说明的模块。首先还是看一下代码。
 
 ```javascript
@@ -132,7 +156,7 @@ reducers | object |{}| 存放响应器[reducer](#reducer)。响应器是一个�
  >2. <span id="reducer">reducer</span>是一个用于响应[action](#action)事件的函数，它被注入了两个参数 `state` 和 `action`。其中`state`为当前的所有状态，`action`参数为[action](#action)事件传入的值。最后reducer返回一个全新的`state`。（温馨提示：请参照上方的代码进行理解）
 
  
-### <span id="action">3. action</span>
+### <span id="action">action</span>
 
 `action`最基础的作用就是发起变更状态的请求。在具体的项目中，你可以将以一些了业务逻辑放在这里，也可以做单纯的数据结构处理。单独作为一个块，这样设计最初的目的也是为了解耦和复用。但多数情况下，`action`和`model`关系紧密，所以可以将两者放入一个文件中。但同时不要错误的将两者混为一谈。下面就是一个`action`
 
@@ -154,7 +178,7 @@ export async function getOpportunityList(params, update) {
 
 `action`尽量使用`async`声明，对于异步加载很方便。每一个`action`都被注入了一个参数`update`。`update`是一个函数，他只接收一个参数，这个参数是一个对象。其中`type`为必须属性，它的值指向的是用来响应它请求的，具体某个`model`下的某个`reducer`响应器。其他属性为携带参数，可以任意添加。
 
-### <span id="action">4. api</span>
+### <span id="api">api</span>
 
 你可以理解为持久层，他负责对接后台服务，也可以想象成数据源。将它但作为一块抽离出来目的是解耦，实现复用。
 
@@ -179,15 +203,15 @@ export async function saveUserRequest(params) {
 
 ```
 
-## 三.装饰器
+## <span id="decorate">装饰器</span>
 
 `Tomato`提供的一些具体的方法、装饰器。这些东西能够为你的组件提供一些特殊的功能，比如：状态回滚、消息通知、路由跳转、location监听等等。
 
-###1.BaseAction
+### <span id="baseaction">BaseAction</span>
 `BaseAction`提供基础功能，包括一下方法：
 
-&#8195;&#8195;方法&#8195;&#8195; | &#8195;&#8195;&#8195;参数&#8195;&#8195; | 返回值 | 功能说明
---- | --- | --- | --- | ---
+方法| 参数 | 返回值 | 功能说明
+--- | --- | --- | ---
 [linkTo](#linkTo)| (location) | -- | 跳转 
 [redirect](#redirect)|(location)|-- | 重定向
 [go](#go)|(number)| -- | 跳转指定浏览历史记录
@@ -288,7 +312,7 @@ this.props.baseAction.rollBack("home");
 
 **返回值**
 无
-####2.Selecter
+#### <span id="selecter">Selecter</span>
 绑定`model`，`view`，`action`三者得工具。由`Tomato`划分出来的四大模块都是独立的，每一部分都不能独立工组，因为他们不是一个完整的系统。只有通过绑定，引用这些方式，组合在一起才能构成一个完整的组件。
 
 使用实例：
@@ -320,26 +344,26 @@ export class View extends Component {
 }
 
 ```
-####3.RootRouteConnect
+#### <span id="rootrouteconnect">RootRouteConnect</span>
 
 标记根路由组件
 
-####4.Configuration
+#### <span id="configuration">Configuration</span>
 
 标记当前类为配置类，重写系统的约定配置。
 
-####5.Tabbar
+#### <span id="tabbar">Tabbar</span>
 
 提供Tabbar数据，如果需要重写Tabber组件，可通过@Tabbar装饰器修饰以获取系统数据。需要注意的是`Tomato`内部提供了一个Tabber样式组件可直接使用。
 
-####6.Notification
+#### <span id="notification">Notification</span>
 
 通知中心，提供更便捷的通知服务。
 
 `Notification`通知服务，其中包括一下方法：
 
 方法 | 参数 | 返回值 | 功能说明
---- | --- | --- | --- | ---
+--- | --- | --- | ---
 [observer](#observer)|(name,func)| -- | 注册观察者
 [postNotification](#postNotification)|(name,...params)|-- | 发送消息通知
 [removeObserver](#removeObserver)| (name) | -- | 移除观察者
@@ -402,38 +426,33 @@ removeObserver('name');
 **返回值**
 无
 
-###配置类
+### <span id="configure">配置类</span>
 
-####1.AuthorityInterceptor
+#### <span id="authorityinterceptor">AuthorityInterceptor</span>
 方法1
->方法：static checkAuthority(author, redirect);
->用途：是不是有效用户权限（只会在第一次进入系统时是调用);
->参数：
->`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。
->`@redirect`重定向方法；
+>方法：`static checkAuthority(author, redirect)`;<br/>
+>用途：是不是有效用户权限（只会在第一次进入系统时是调用);<br/>
+> 参数：
+>`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。<br/>
+>`@redirect`重定向方法；<br/>
 
 方法2
->方法：static preHandle(location, redirect);
->用途：每个页面进入之前的预处理（可以在此处做权限控制）；
+>方法：`static preHandle(location, redirect)`;<br/>
+>用途：每个页面进入之前的预处理（可以在此处做权限控制）；<br/>
 >参数：
->`@location`当前访问的地址信息
->`@redirect`重定向方法
->`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。需要注意的是，系统必须存在一个状态，非开即关。所以无论如何author方法必须被调用。
->`@debut`是不是第一次进入系统。
+>`@location`当前访问的地址信息<br/>
+>`@redirect`重定向方法<br/>
+>`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。需要注意的是，系统必须存在一个状态，非开即关。所以无论如何author方法必须被调用。<br/>
+>`@debut`是不是第一次进入系统。<br/>
 
 
-###工具方法
+### <span id="tools">工具方法</span>
 
-1.combinModals
-
-
-
+1.<span id="combinmodals">combinModals</span>
 
 
 
 文档正在更新中......
-
-[TOC]
 
 > <span id="jump">用户登录认证</span>
 
