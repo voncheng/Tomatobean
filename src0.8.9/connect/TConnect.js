@@ -7,7 +7,7 @@
  * Last Modified:Monday November 13th 2017 5:56:03 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';

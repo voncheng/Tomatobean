@@ -7,7 +7,7 @@
  * Last Modified:Tuesday November 21st 2017 1:23:57 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 /**
  * 一个可以被构造的通知中心

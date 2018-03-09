@@ -7,7 +7,7 @@
  * Last Modified:Saturday November 11th 2017 4:19:16 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 export default function setHost(conf) {
   // 是否是生产环境

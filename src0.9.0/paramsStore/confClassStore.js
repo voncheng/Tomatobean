@@ -8,7 +8,7 @@
  * Last Modified:Friday December 15th 2017 11:29:20 am
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 
 function confClassStoreCreate() {

@@ -7,7 +7,7 @@
  * Last Modified:Friday November 10th 2017 2:39:53 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 
 import React from 'react';

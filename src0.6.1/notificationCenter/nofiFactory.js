@@ -7,7 +7,7 @@
  * Last Modified:Tuesday November 21st 2017 1:38:30 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 export default function notiExtension() {
   const center = {};

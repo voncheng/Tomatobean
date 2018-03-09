@@ -7,7 +7,7 @@
  * Last Modified:Wednesday November 22nd 2017 9:43:28 am
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 import React from 'react';
 import * as noti from 'notificationcenter';

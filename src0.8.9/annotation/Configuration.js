@@ -7,7 +7,7 @@
  * Last Modified:Thursday December 14th 2017 10:58:33 am
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 import confClassStore from '../paramsStore/confClassStore';
 // export default function Configuration(target, key, descriptor) {

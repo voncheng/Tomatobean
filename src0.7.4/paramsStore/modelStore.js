@@ -7,7 +7,7 @@
  * Last Modified:Saturday November 11th 2017 5:05:26 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 import { objDeepCopy } from '../util/tools';
 

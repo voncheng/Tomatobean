@@ -7,7 +7,7 @@
  * Last Modified:Monday November 13th 2017 5:56:22 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 import TConnect from '../connect';
 import { tabBarDecrementAndRedirect, linkTo } from '../actions/kitAction.js';

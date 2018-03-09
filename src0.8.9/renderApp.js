@@ -7,7 +7,7 @@
  * Last Modified:Saturday November 11th 2017 4:18:58 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 import React from 'react';
 import ReactDOM from 'react-dom';

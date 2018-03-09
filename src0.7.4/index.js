@@ -7,7 +7,7 @@
  * Last Modified:Saturday November 11th 2017 4:18:28 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 import confStore from './paramsStore/confStore';
 import modelStore from './paramsStore/modelStore';

@@ -7,7 +7,7 @@
  * Last Modified:Saturday November 11th 2017 4:42:24 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 function confStoreCreate() {
   let config = {};

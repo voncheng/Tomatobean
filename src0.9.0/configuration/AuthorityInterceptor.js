@@ -7,7 +7,7 @@
  * Last Modified:Wednesday December 13th 2017 6:22:19 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 
 // function dispatch(target, key, descriptor) {

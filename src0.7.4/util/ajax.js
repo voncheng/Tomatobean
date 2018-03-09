@@ -7,7 +7,7 @@
  * Last Modified:Saturday November 11th 2017 6:00:32 pm
  * Modified By: chengpu
  * -----
- * Copyright (c) 2017 MagCloud
+ * 
  */
 import { message } from 'antd';
 /**
