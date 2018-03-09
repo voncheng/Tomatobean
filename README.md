@@ -13,22 +13,22 @@ Tomatobean是一个react + redux + react-router的集成框架。它简化了三
 * [安装](#install)
 * [快速开始](#start)
 * [进阶](#advance)
-  - [routerConfig](#routerConfig)
+  - [routerConfig](#routerconfig)
   - [models](#models)
   - [action](#action)
   - [api](#api)
 * [装饰器](#decorate)
-  - [BaseAction](#BaseAction)
-  - [Selecter](#Selecter)
-  - [RootRouteConnect](#RootRouteConnect)
-  - [Configuration](#Configuration)
-  - [Tabbar](#Tabbar)
-  - [Notification](#Notification)
+  - [BaseAction](#baseaction)
+  - [Selecter](#selecter)
+  - [RootRouteConnect](#rootrouteconnect)
+  - [Configuration](#configuration)
+  - [Tabbar](#tabbar)
+  - [Notification](#notification)
   
-* [配置类](#configuration)
-  - [AuthorityInterceptor](#AuthorityInterceptor)
+* [配置类](#configure)
+  - [AuthorityInterceptor](#authorityinterceptor)
 * [工具方法](#tools)
-  - [combinModals](#combinModals)
+  - [combinModals](#combinmodals)
 
 ## <span id="install">安装</span>
 
@@ -61,7 +61,7 @@ app的运行依赖于这三个文件。其中model配置文件涉及到开发者
 
 ## <span id="advance">进阶</span>
 
-### <span id="routerConfig">routerConfig</span>
+### <span id="routerconfig">routerConfig</span>
 
 routerConfig 这个文件主要是配置工程的路由部分。由于tomato框架集成的是react-router组件，所以在配置上跟react-router有一些相似之处。只不过为了一些特殊的功能的实现，再其基础上进行了包装。整个配置文件看起来会是这样。
 
@@ -207,7 +207,7 @@ export async function saveUserRequest(params) {
 
 `Tomato`提供的一些具体的方法、装饰器。这些东西能够为你的组件提供一些特殊的功能，比如：状态回滚、消息通知、路由跳转、location监听等等。
 
-### <span id="BaseAction">BaseAction</span>
+### <span id="baseaction">BaseAction</span>
 `BaseAction`提供基础功能，包括一下方法：
 
 方法| 参数 | 返回值 | 功能说明
@@ -312,7 +312,7 @@ this.props.baseAction.rollBack("home");
 
 **返回值**
 无
-#### <span id="Selecter">Selecter</span>
+#### <span id="selecter">Selecter</span>
 绑定`model`，`view`，`action`三者得工具。由`Tomato`划分出来的四大模块都是独立的，每一部分都不能独立工组，因为他们不是一个完整的系统。只有通过绑定，引用这些方式，组合在一起才能构成一个完整的组件。
 
 使用实例：
@@ -344,19 +344,19 @@ export class View extends Component {
 }
 
 ```
-#### <span id="RootRouteConnect">RootRouteConnect</span>
+#### <span id="rootrouteconnect">RootRouteConnect</span>
 
 标记根路由组件
 
-#### <span id="Configuration">Configuration</span>
+#### <span id="configuration">Configuration</span>
 
 标记当前类为配置类，重写系统的约定配置。
 
-#### <span id="Tabbar">Tabbar</span>
+#### <span id="tabbar">Tabbar</span>
 
 提供Tabbar数据，如果需要重写Tabber组件，可通过@Tabbar装饰器修饰以获取系统数据。需要注意的是`Tomato`内部提供了一个Tabber样式组件可直接使用。
 
-#### <span id="Notification">Notification</span>
+#### <span id="notification">Notification</span>
 
 通知中心，提供更便捷的通知服务。
 
@@ -426,9 +426,9 @@ removeObserver('name');
 **返回值**
 无
 
-### <span id="configuration">配置类</span>
+### <span id="configure">配置类</span>
 
-#### <span id="AuthorityInterceptor">AuthorityInterceptor</span>
+#### <span id="authorityinterceptor">AuthorityInterceptor</span>
 方法1
 >方法：`static checkAuthority(author, redirect)`;<br/>
 >用途：是不是有效用户权限（只会在第一次进入系统时是调用);<br/>
@@ -448,7 +448,7 @@ removeObserver('name');
 
 ### <span id="tools">工具方法</span>
 
-1.<span id="combinModals">combinModals</span>
+1.<span id="combinmodals">combinModals</span>
 
 
 
