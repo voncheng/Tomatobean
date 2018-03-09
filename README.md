@@ -183,7 +183,7 @@ export async function saveUserRequest(params) {
 
 `Tomato`提供的一些具体的方法、装饰器。这些东西能够为你的组件提供一些特殊的功能，比如：状态回滚、消息通知、路由跳转、location监听等等。
 
-###1.BaseAction
+### 1.BaseAction
 `BaseAction`提供基础功能，包括一下方法：
 
 &#8195;&#8195;方法&#8195;&#8195; | &#8195;&#8195;&#8195;参数&#8195;&#8195; | 返回值 | 功能说明
@@ -288,7 +288,7 @@ this.props.baseAction.rollBack("home");
 
 **返回值**
 无
-####2.Selecter
+#### 2.Selecter
 绑定`model`，`view`，`action`三者得工具。由`Tomato`划分出来的四大模块都是独立的，每一部分都不能独立工组，因为他们不是一个完整的系统。只有通过绑定，引用这些方式，组合在一起才能构成一个完整的组件。
 
 使用实例：
@@ -320,19 +320,19 @@ export class View extends Component {
 }
 
 ```
-####3.RootRouteConnect
+#### 3.RootRouteConnect
 
 标记根路由组件
 
-####4.Configuration
+#### 4.Configuration
 
 标记当前类为配置类，重写系统的约定配置。
 
-####5.Tabbar
+#### 5.Tabbar
 
 提供Tabbar数据，如果需要重写Tabber组件，可通过@Tabbar装饰器修饰以获取系统数据。需要注意的是`Tomato`内部提供了一个Tabber样式组件可直接使用。
 
-####6.Notification
+#### 6.Notification
 
 通知中心，提供更便捷的通知服务。
 
@@ -402,9 +402,9 @@ removeObserver('name');
 **返回值**
 无
 
-###配置类
+### 配置类
 
-####1.AuthorityInterceptor
+#### 1.AuthorityInterceptor
 方法1
 >方法：static checkAuthority(author, redirect);
 >用途：是不是有效用户权限（只会在第一次进入系统时是调用);
@@ -422,7 +422,7 @@ removeObserver('name');
 >`@debut`是不是第一次进入系统。
 
 
-###工具方法
+### 工具方法
 
 1.combinModals
 
