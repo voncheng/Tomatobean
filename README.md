@@ -187,7 +187,7 @@ export async function saveUserRequest(params) {
 `BaseAction`提供基础功能，包括一下方法：
 
 方法 | 参数 | 返回值 | 功能说明
---- | --- | --- | --- | ---
+--- | --- | --- | ---
 [linkTo](#linkTo)| (location) | -- | 跳转 
 [redirect](#redirect)|(location)|-- | 重定向
 [go](#go)|(number)| -- | 跳转指定浏览历史记录
