@@ -62,6 +62,7 @@ app的运行依赖于这三个文件。其中model配置文件涉及到开发者
 ## <span id="advance">进阶</span>
 
 ### <span id="routerConfig">routerConfig</span>
+
 routerConfig 这个文件主要是配置工程的路由部分。由于tomato框架集成的是react-router组件，所以在配置上跟react-router有一些相似之处。只不过为了一些特殊的功能的实现，再其基础上进行了包装。整个配置文件看起来会是这样。
 
 ```javascript
