@@ -339,7 +339,7 @@ export class View extends Component {
 `Notification`通知服务，其中包括一下方法：
 
 方法 | 参数 | 返回值 | 功能说明
---- | --- | --- | --- | ---
+--- | --- | --- | ---
 [observer](#observer)|(name,func)| -- | 注册观察者
 [postNotification](#postNotification)|(name,...params)|-- | 发送消息通知
 [removeObserver](#removeObserver)| (name) | -- | 移除观察者
@@ -406,20 +406,20 @@ removeObserver('name');
 
 #### 1.AuthorityInterceptor
 方法1
->方法：static checkAuthority(author, redirect);
->用途：是不是有效用户权限（只会在第一次进入系统时是调用);
->参数：
->`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。
->`@redirect`重定向方法；
+>方法：`static checkAuthority(author, redirect)`;<br/>
+>用途：是不是有效用户权限（只会在第一次进入系统时是调用);<br/>
+> 参数：
+>`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。<br/>
+>`@redirect`重定向方法；<br/>
 
 方法2
->方法：static preHandle(location, redirect);
->用途：每个页面进入之前的预处理（可以在此处做权限控制）；
+>方法：`static preHandle(location, redirect)`;<br/>
+>用途：每个页面进入之前的预处理（可以在此处做权限控制）；<br/>
 >参数：
->`@location`当前访问的地址信息
->`@redirect`重定向方法
->`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。需要注意的是，系统必须存在一个状态，非开即关。所以无论如何author方法必须被调用。
->`@debut`是不是第一次进入系统。
+>`@location`当前访问的地址信息<br/>
+>`@redirect`重定向方法<br/>
+>`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。需要注意的是，系统必须存在一个状态，非开即关。所以无论如何author方法必须被调用。<br/>
+>`@debut`是不是第一次进入系统。<br/>
 
 
 ### 工具方法
