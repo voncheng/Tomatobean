@@ -113,7 +113,7 @@ redirect| string | |重定向匹配路径
 state| object || 浏览器Location的状态，可以在页面跳转的时候最为传值对象。`注:` 按需要内部可以添加任意多个值，在这里配置作为初始值使用
 mark| sting ||是否作为Tabbar的展示项，如果有内容则值作为Tabbar的展示内容（可选）
 childRoutes| Object || 子路由
-checkAuthority| boolean|true| 需不需要做用户登录认证，也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#jump)
+checkAuthority| boolean|true| 需不需要做用户登录认证，也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#authority)
 
 ### <span id="models">models</span>
 models作为工程业务的主体部分，也是重点说明的模块。首先还是看一下代码。
@@ -454,6 +454,47 @@ removeObserver('name');
 
 文档正在更新中......
 
-> <span id="jump">用户登录认证</span>
+> <span id="authority">用户登录认证</span>
 
+```javascript
 
+import { Configuration, AuthorityInterceptor } from 'tomatobean';
+
+@Configuration
+export class Ub extends AuthorityInterceptor {
+  /**
+   * 是不是有效用户权限
+   * @param {Func} author 进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。
+   *              需要注意的是，系统必须存在一个状态，非开即关。所以无论如何author方法必须被调用。
+   * @param {Func} redirect 从定向方法
+   */
+  static checkAuthority(author, redirect) {
+    // 示例代码...
+    // 模拟异步请求
+    setTimeout(() => {
+      if (true) { // 有效用户
+        author(true);
+        // 从服务器获取的权限
+        Ub.AJ = ['/home'];
+      } else { // 无效用户
+        author(false);
+        redirect({ pathname: '/login' });
+      }
+    }, 100);
+  }
+  /**
+   * 每个页面进入之前的预处理（可以在此处做权限控制）
+   * @param {Object} location 当前访问的地址信息
+   * @param {Func} redirect 重定向方法
+   * @param {Func} author  ...(同上)
+   * @param {Func} debut 是不是第一次进入系统
+   */
+  static preHandle(location, redirect) {
+    // 示例代码...
+    if (Ub.AJ && location.pathname === Ub.AJ[0]) {
+      redirect('/error');
+    }
+  }
+}
+
+```
