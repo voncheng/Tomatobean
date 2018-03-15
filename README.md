@@ -28,7 +28,7 @@ Tomatobean是一个react + redux + react-router的集成框架。它简化了三
 * [配置类](#configure)
   - [AuthorityInterceptor](#authorityinterceptor)
 * [工具方法](#tools)
-  - [combin](#tools)
+  - [combinModals](#combinmodals)
 
 ## <span id="install">安装</span>
 
