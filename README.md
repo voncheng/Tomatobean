@@ -445,7 +445,7 @@ removeObserver('name');
 >`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。需要注意的是，系统必须存在一个状态，非开即关。所以无论如何author方法必须被调用。<br/>
 >`@debut`是不是第一次进入系统。<br/>
 
-<span id="authority">用户登录认证</span>
+#### <span id="authority">用户登录认证</span>
 
 ```javascript
 
