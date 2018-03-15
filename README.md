@@ -113,7 +113,7 @@ redirect| string | |重定向匹配路径
 state| object || 浏览器Location的状态，可以在页面跳转的时候最为传值对象。`注:` 按需要内部可以添加任意多个值，在这里配置作为初始值使用
 mark| sting ||是否作为Tabbar的展示项，如果有内容则值作为Tabbar的展示内容（可选）
 childRoutes| Object || 子路由
-checkAuthority| boolean|true| 需不需要做用户登录认证，也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#authority1)
+checkAuthority| boolean|true| 需不需要做用户登录认证，也就是说在进入该页面之前是否判断当前用户已登录，没有登录将会跳转登录操作。用户认证的[具体配置](#authority)
 
 ### <span id="models">models</span>
 models作为工程业务的主体部分，也是重点说明的模块。首先还是看一下代码。
@@ -445,7 +445,7 @@ removeObserver('name');
 >`@author`进入系统的遥控器(此方法可以作为信物传递)，只有当 author(true)时才会打开系统。需要注意的是，系统必须存在一个状态，非开即关。所以无论如何author方法必须被调用。<br/>
 >`@debut`是不是第一次进入系统。<br/>
 
-> <span id="authority1">用户登录认证</span>
+> <span id="authority">用户登录认证</span>
 
 ```javascript
 
