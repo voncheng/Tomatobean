@@ -493,3 +493,10 @@ export class Ub extends AuthorityInterceptor {
 ### <span id="tools">工具方法</span>
 
 1.<span id="combinmodals" >combinModals</span>
+
+## <span id="support">Support</span>
+
+该框架拥有多个项目的成功案例，如果在项目中开发者遇到问题，可通过下面的联系方式与作者沟通。
+
+联系方式：
+wachat: chengpu552877
