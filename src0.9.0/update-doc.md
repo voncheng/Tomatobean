@@ -1,7 +1,7 @@
 ### Tomatobean v0.9.0 更新说明（此版本下兼容）
 
 #### update1: 兼容create-react-app
-本次更新针对官方构建工具create-react-app做了一些改动。完成了`create-react-app` + `tomatobean` 最佳开发实践。两者搭配能够快速构建工程，降低了学习成本。对于初学者来说能够抛开webpack复杂的配置，单其中会对webpack的配置文件做少量的修改。具体可以查看[Demo](http:www.baidu.com)。
+本次更新针对官方构建工具create-react-app做了一些改动。完成了`create-react-app` + `tomatobean` 最佳开发实践。两者搭配能够快速构建工程，降低了学习成本。对于初学者来说能够抛开webpack复杂的配置，单其中会对webpack的配置文件做少量的修改。具体可以查看[Demo](https://github.com/VonCheng/TBExample)。
 #### update2: 新增自动扫描功能
 上个版本中配置类和model需要手动引入，但在此版本中只需要加入扫描路径就可以。具体配置方法如下：
 
