@@ -49,8 +49,8 @@ export const RootRoute = (Target) => {
       <React.Fragment>
         {authorityStatus ?
           <React.Fragment>
-            <Target {...others} {...actions} />
-            <div className={`${getDisplayName(Target)}-childRoutes`}>{children}</div>
+            <Target {...others} {...actions} children={children} />
+            {/* <div className={`${getDisplayName(Target)}-childRoutes`}>{children}</div> */}
           </React.Fragment> : ''}
       </React.Fragment>
     );
@@ -61,35 +61,6 @@ export const RootRoute = (Target) => {
   }
   return connect(mapState)(WithSubscription);
 };
-
-// export const BaseComponent = (Target, name, descriptor) => {
-//     descriptor = Object.getOwnPropertyDescriptor(Target, 'prototype')
-//     var Cmp_ = descriptor.value
-//     // console.log(originalMethod)
-//      descriptor.value = (...args) => {
-
-//         class FF extends Component {
-//                 constructor(props) {
-//                     super(props);
-//                 }
-//                 render() {
-//                     const {
-//                         children,
-//                         ...props
-//                     } = this.props;
-//                     return (
-//                         <div>
-//                             <Target {...props}/>
-//                             <div className={Target.name + '-childRoutes'}>{children}</div>
-//                         </div>
-//                     );
-//                 }
-//             }
-//             return FF()
-//      }
-//     console.log(descriptor);
-//     // return descriptor;
-// }
 
 /**
  *
